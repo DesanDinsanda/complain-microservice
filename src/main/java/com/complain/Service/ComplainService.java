@@ -2,9 +2,12 @@ package com.complain.Service;
 
 import com.complain.Data.Complain;
 import com.complain.Data.ComplainRepository;
+import com.complain.Service.Interservice.ContractService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.server.ResponseStatusException;
 
 import java.util.Date;
 import java.util.List;
@@ -14,8 +17,13 @@ import java.util.Optional;
 public class ComplainService {
     @Autowired
     private ComplainRepository compRepo;
+    @Autowired
+    private ContractService contractService;
 
     public Complain createComplain(Complain comp){
+        if (!contractService.CustomerContractExists(comp.getCustomerId())){
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Customer contract was not found");
+        }
         comp.setDate(new Date());
         comp.setStatus("In Progress");
         return compRepo.save(comp);
@@ -39,6 +47,9 @@ public class ComplainService {
     }
 
     public Complain updateComplain(Complain comp){
+        if (!contractService.CustomerContractExists(comp.getCustomerId())){
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Customer contract was not found");
+        }
         comp.setDate(new Date());
         comp.setStatus("In Progress");
         return compRepo.save(comp);
