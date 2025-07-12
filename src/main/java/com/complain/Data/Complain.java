@@ -24,7 +24,7 @@ public class Complain {
     @Column(name = "date")
     private Date date;
 
-    @Column(name = "cust_contract_id")
+    @Column(name = "cust_id")
     private int customerId;
 
     @Column(name = "status")
