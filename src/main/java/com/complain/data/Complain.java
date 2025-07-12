@@ -1,4 +1,4 @@
-package com.complain.Data;
+package com.complain.data;
 
 import jakarta.persistence.*;
 

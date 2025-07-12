@@ -1,9 +1,9 @@
-package com.complain.Service;
+package com.complain.service;
 
-import com.complain.Data.Complain;
-import com.complain.Data.ComplainRepository;
-import com.complain.Service.Interservice.ContractService;
-import com.complain.Service.Interservice.CustomerService;
+import com.complain.data.Complain;
+import com.complain.data.ComplainRepository;
+import com.complain.service.interservice.ContractService;
+import com.complain.service.interservice.CustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;

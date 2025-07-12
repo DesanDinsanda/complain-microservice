@@ -1,4 +1,4 @@
-package com.complain.Config;
+package com.complain.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

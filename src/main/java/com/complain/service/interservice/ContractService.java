@@ -1,4 +1,4 @@
-package com.complain.Service.Interservice;
+package com.complain.service.interservice;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
@@ -6,26 +6,26 @@ import org.springframework.web.reactive.function.client.WebClient;
 import org.springframework.web.reactive.function.client.WebClientResponseException;
 
 @Service
-public class CustomerService {
+public class ContractService {
     private WebClient webClient;
 
-    public CustomerService(WebClient.Builder builder, @Value("${service.customer.url}") String url){
-        this.webClient = builder.baseUrl(url).build();
+    public ContractService(WebClient.Builder builder, @Value("${service.contract.url}") String url){
+        this.webClient=builder.baseUrl(url).build();
     }
 
-    public Boolean CustomerExists(int id){
+    public Boolean CustomerContractExists(int id){
         try{
             webClient.head()
-                    .uri("/customers/"+id)
+                    .uri("/customers/contracts/"+id)
                     .retrieve()
                     .toBodilessEntity()
                     .block();
 
             return true;
-        } catch(WebClientResponseException.NotFound ex){
+        } catch (WebClientResponseException.NotFound ex){
             return false;
-        } catch (Exception ex){
-            throw new RuntimeException("Unknown error", ex);
+        } catch (WebClientResponseException ex){
+            throw new RuntimeException("Unexpected error", ex);
         }
     }
 }

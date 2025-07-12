@@ -1,7 +1,7 @@
-package com.complain.Controller;
+package com.complain.controller;
 
-import com.complain.Data.Complain;
-import com.complain.Service.ComplainService;
+import com.complain.data.Complain;
+import com.complain.service.ComplainService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
