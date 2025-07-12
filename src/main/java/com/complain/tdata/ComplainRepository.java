@@ -1,4 +1,4 @@
-package com.complain.Data;
+package com.complain.tdata;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
